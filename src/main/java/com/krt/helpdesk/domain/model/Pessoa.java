@@ -17,7 +17,6 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.krt.helpdesk.domain.enums.Perfil;
 
 @Entity
@@ -42,7 +41,7 @@ public abstract class Pessoa implements Serializable {
 	@CollectionTable(name = "PERFIS")
 	protected Set<Integer> perfis = new HashSet<>();
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	
 	protected LocalDate dataCriacao = LocalDate.now();
 	
 	
