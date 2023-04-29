@@ -3,6 +3,8 @@ package com.krt.helpdesk.domain.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.krt.helpdesk.domain.model.Chamado;
 
@@ -18,16 +20,22 @@ public class ChamadoDTO implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
 	
+	@NotNull(message = "O campo Prioridade é obrigatorio")
 	private Integer prioridade;
 	
+	@NotNull(message = "O campo Status é obrigatorio")
 	private Integer status;
 	
+	@NotNull(message = "O campo Titulo é obrigatorio")
 	private String titulo;
 	
+	@NotNull(message = "O campo Observações é obrigatorio")
 	private String observacoes;
 	
+	@NotNull(message = "O campo Tecnico é obrigatorio")
 	private Integer tecnico;
 	
+	@NotNull(message = "O campo Cliente é obrigatorio")
 	private Integer cliente;
 	
 	private String nomeTecnico; //criando essa variavel pro nome do tecnico ser retornado no front de forma mais performatica
