@@ -3,6 +3,7 @@ package com.krt.helpdesk.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.krt.helpdesk.domain.enums.Perfil;
@@ -27,13 +28,16 @@ public class DBService {
 	@Autowired
 	private ChamadoRepository chamadoRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	
 	public void instanciaDB() {
 		
-		Tecnico tec1 = new Tecnico(null, "Karte Nascimento", "39008551616", "karte@gmail.com", "123");
+		Tecnico tec1 = new Tecnico(null, "Karte Nascimento", "39008551616", "karte@gmail.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 		
-		Cliente cli1 = new Cliente(null, "Jucelino Alcantara", "21335696423", "Jucelino@gmail.com", "123");
+		Cliente cli1 = new Cliente(null, "Jucelino Alcantara", "21335696423", "Jucelino@gmail.com", encoder.encode("123"));
 		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
 		
